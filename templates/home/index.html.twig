@@ -2,6 +2,14 @@
 
 {% block title %}Home{% endblock %}
 
+{% block header %}
+	{% include 'base/header.html.twig' %}
+{% endblock %}
+
 {% block body %}
 	<button type="button" class="btn btn-outline-primary btn-lg">Primary</button>
+{% endblock %}
+
+{% block footer %}
+	{% include 'base/footer.html.twig' %}
 {% endblock %}
