@@ -20,6 +20,9 @@ class User
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Comment $comments = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
+
 
     public function getId(): ?int
     {
@@ -46,6 +49,18 @@ class User
     public function setComments(?Comment $comments): self
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
