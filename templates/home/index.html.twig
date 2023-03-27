@@ -7,10 +7,16 @@
 {% endblock %}
 
 {% block main %}
-	<main>
+	<main class="p-4">
 		{% include 'base/carousel.html.twig' %}
 
-		
+		<h3>Featured</h3>
+
+		<section id="post-container">
+			{% for post in posts %}
+				{% include 'component/home.post.html.twig' with {'post' : post} %}
+			{% endfor %}
+		</section>
 	</main>
 {% endblock %}
 
