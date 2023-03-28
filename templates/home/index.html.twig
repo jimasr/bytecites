@@ -23,16 +23,35 @@
 				{% endfor %}
 			</div>
 
+			<div id="latest-popular">
+				<aside id="latest-post-container">
+					{# TODO implement latest post section logic #}
 
+					<h3 class="mt-4 px-3">Latest</h3>
+					<hr class="hr"/>
+					<div id="post-featured">
+						{% for post in posts %}
+							{% include 'component/home.post.html.twig' with {'post' : post} %}
+						{% endfor %}
+					</div>
+				</aside>
 
-			<h3 class="mt-4 px-3">Latest</h3>
-			<hr class="hr"/>
-			<div id="post-featured">
-				{% for post in posts %}
-					{% include 'component/home.post.html.twig' with {'post' : post} %}
-				{% endfor %}
+				<aside id="popular-post-container">
+					<h3 class="mt-4 px-3">Popular posts</h3>
+					<hr class="hr"/>
+
+					{# TODO implement popular post section logic #}
+
+					<div>
+						{% set count = 0 %}
+						{% for post in posts %}
+							{% set count = count + 1 %}
+							{% include 'component/popular.post.html.twig' with {'post' : post, 'count' : count} %}
+						{% endfor %}
+					</div>
+				</aside>
 			</div>
-
+				
 		</section>
 
 	</main>

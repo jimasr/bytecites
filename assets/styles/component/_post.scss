@@ -8,22 +8,48 @@
 	.hr {
 		width: 100%;
 	}
+
+	#latest-popular {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		column-gap: 3em;
+
+		#latest-post-container {
+			max-width: 70%;
+		}
+
+		// #popular-post-container {
+		// 	max-width: 30%;
+		// }
+	}
 }
 
 #post-featured {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+}
 
-	#home-post {
-		width: 300px;
-		height: 350px;
+#home-post {
+	width: 300px;
+	height: 350px;
 
-		#post-content {
-			text-align: justify;
+	#post-content {
+		text-align: justify;
+	}
+}
+
+#popular-post {
+	max-width: 300px;
+
+	.popular-link {
+		color: black;
+		text-decoration: none;
+		
+		&:hover {
+			color: rgb(171, 171, 171);
 		}
 	}
-
-
 }
 
