@@ -10,13 +10,31 @@
 	<main class="p-4">
 		{% include 'base/carousel.html.twig' %}
 
-		<h3>Featured</h3>
+
 
 		<section id="post-container">
-			{% for post in posts %}
-				{% include 'component/home.post.html.twig' with {'post' : post} %}
-			{% endfor %}
+			<h3 class="mt-4 px-3">Featured</h3>
+
+			<hr class="hr"/>
+
+			<div id="post-featured">
+				{% for post in posts %}
+					{% include 'component/home.post.html.twig' with {'post' : post} %}
+				{% endfor %}
+			</div>
+
+
+
+			<h3 class="mt-4 px-3">Latest</h3>
+			<hr class="hr"/>
+			<div id="post-featured">
+				{% for post in posts %}
+					{% include 'component/home.post.html.twig' with {'post' : post} %}
+				{% endfor %}
+			</div>
+
 		</section>
+
 	</main>
 {% endblock %}
 

@@ -1,14 +1,29 @@
+
 #post-container {
 	display: flex;
 	flex-wrap: wrap;
 
+	padding: 3em;
+
+	.hr {
+		width: 100%;
+	}
+}
+
+#post-featured {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
 	#home-post {
-		width: 350px;
+		width: 300px;
 		height: 350px;
 
 		#post-content {
-			overflow: hidden;
+			text-align: justify;
 		}
 	}
+
+
 }
 
