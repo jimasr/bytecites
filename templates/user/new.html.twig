@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}Bytecites - Registration{% endblock %}
 
 {% block body %}
-    <h1>Welcome to the Bytecites community !</h1>
+    <h1 class="register-title">Welcome to the Bytecites community !</h1>
 
-    {{ include('user/_form.html.twig') }}
+    <div class="card">
+        <div class="card-body">
+            {{ include('user/_form.html.twig') }}
+        </div>
+    </div>
+
 
     <!-- TODO : Redirection for login -->
-
-    <div>
+    <div class="login-redirection">
         Already have an account?
         <a href="{{ path('app_user_index') }}">Log in</a>
     </div>

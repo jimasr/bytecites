@@ -21,6 +21,27 @@ class UserController extends AbstractController
         ]);
     }
 
+    //TODO
+    #[Route('/login', name: 'app_user_login', methods: ['POST'])]
+    public function login(Request $request, UserRepository $userRepository): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //TODO
+
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('user/login.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
+
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository): Response
     {
