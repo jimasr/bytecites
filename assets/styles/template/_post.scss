@@ -1,9 +1,11 @@
-.post-show {
+.post-details {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 	text-align: justify;
 
-	.post-inner {
+	.post-inner, .comment-inner {
 		display: flex;
 		flex-direction: column;
 		width: 80%;
