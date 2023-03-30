@@ -5,10 +5,10 @@
 	justify-content: center;
 	text-align: justify;
 
-	.post-inner, .comment-inner {
+	.post-inner {
 		display: flex;
 		flex-direction: column;
-		width: 80%;
+		padding: 4em;
 	}
 }
 

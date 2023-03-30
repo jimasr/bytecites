@@ -9,26 +9,24 @@
 <main>
     <section class="post-details">
         <div class="post-inner">
-            <h1>{{ post.title }}</h1>
+            <h1 class="mb-3">{{ post.title }}</h1>
             <h4 class="description">{{ post.description }}</h4>
 
             <hr class="hr mb-5"></hr>
 
             <p>{{ post.content }}</p>
             <p>{{ post.publishedAt ? post.publishedAt|date('Y-m-d') : '' }}</p>
-        </div>
-
-        <div class="comment-inner mt-5">
-            <h4>Leave a Reply</h4>
 
             <hr class="hr mb-5"></hr>
             
             {% for comment in post.comments %}
-                <div class="d-flex flex-column">
-                    <p>{{ comment.content }}</p>
-                    <p>{{ comment.createdAt ? comment.createdAt|date('Y-m-d') : '' }}</p>
-                </div>
+                {% include 'component/comment.post.html.twig' with {'comment' : comment } %}
             {% endfor %}
+
+
+            <h4 class="mt-5">Leave a Reply</h4>
+
+            <hr class="hr mb-5"></hr>
 
             {{ include('comment/_form.html.twig') }}
         </div>
