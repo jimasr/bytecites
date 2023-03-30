@@ -47,7 +47,12 @@ class Post
         $this->comments = new ArrayCollection();
         $this->categories = new ArrayCollection();
     }
-
+    
+    public function __toString(): string
+    {
+        return $this->title;
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
