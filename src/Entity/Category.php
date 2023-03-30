@@ -15,42 +15,24 @@ class Category
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: Post::class, mappedBy: 'categories')]
-    private Collection $posts;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
-    public function __construct()
-    {
-        $this->posts = new ArrayCollection();
-    }
+    public function __construct() { } 
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Post>
-     */
-    public function getPosts(): Collection
+    public function getName(): ?string
     {
-        return $this->posts;
+        return $this->name;
     }
 
-    public function addPost(Post $post): self
+    public function setName(string $name): self
     {
-        if (!$this->posts->contains($post)) {
-            $this->posts->add($post);
-            $post->addCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removePost(Post $post): self
-    {
-        if ($this->posts->removeElement($post)) {
-            $post->removeCategory($this);
-        }
+        $this->name = $name;
 
         return $this;
     }
