@@ -20,6 +20,11 @@ class Category
 
     public function __construct() { } 
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

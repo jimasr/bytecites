@@ -1,0 +1,15 @@
+.post-show {
+	display: flex;
+	justify-content: center;
+	text-align: justify;
+
+	.post-inner {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+	}
+}
+
+.description {
+	color: grey;
+}
