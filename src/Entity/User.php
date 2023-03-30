@@ -31,6 +31,9 @@ class User
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phoneNumber = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $plainPassword = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -118,6 +121,18 @@ class User
     public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
