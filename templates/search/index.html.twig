@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Result{% endblock %}
+
+{% block header %}
+    {% include 'base/header.html.twig' %}
+{% endblock %}
+
+{% block main %}
+    <main>
+        <section id="post-container">
+            <h3 class="mt-2 px-3">Search Results : </h3>
+			<hr class="hr"/>
+
+            {% if posts is empty %}
+                <p class="px-3">Sorry, no results found for "{{ query }}"</p>
+            {% endif %}
+
+            
+            <div id="post-featured">
+                {% for post in posts %}
+                    {% include 'component/home.post.html.twig' with {'post' : post} %}
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'base/footer.html.twig' %}
+{% endblock %}

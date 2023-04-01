@@ -16,11 +16,20 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PostRepository extends ServiceEntityRepository
 {
+    /**
+     * PostRepository constructor.
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Post::class);
     }
 
+    /**
+     * Save an entity in the database
+     * @param Post $entity 
+     * @param bool $flush
+     * @return void
+     */
     public function save(Post $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +39,12 @@ class PostRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Remove an entity from the database
+     * @param Post $entity 
+     * @param bool $flush
+     * @return void
+     */
     public function remove(Post $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -39,20 +54,29 @@ class PostRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Post[] Returns an array of Post objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * Search in the title, description and content of the post
+    * @param string $value
+    * @return Post[] Returns an array of Post objects
+    */
+   public function findByName($value): array
+   {
+       $qb = $this->createQueryBuilder('p');
+            
+       $qb->where(
+            $qb->expr()->orX(
+                $qb->expr()->like('p.title', ':val'),
+                $qb->expr()->like('p.description', ':val'),
+                $qb->expr()->like('p.content', ':val')
+                ),
+            $qb->expr()->isNotNull('p.publishedAt')
+            )
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->setParameter('val', '%'.$value.'%');
+
+        return $qb->getQuery()->getResult();
+   }
 
 //    public function findOneBySomeField($value): ?Post
 //    {
