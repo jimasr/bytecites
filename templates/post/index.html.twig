@@ -2,10 +2,6 @@
 
 {% block title %}Post index{% endblock %}
 
-{% block header %}
-    {% include 'base/header.html.twig' %}
-{% endblock %}
-
 {% block main %}
     <h1>Post index</h1>
 
@@ -48,8 +44,4 @@
     </table>
 
     <a href="{{ path('app_post_new') }}">Create new</a>
-{% endblock %}
-
-{% block footer %}
-    {% include 'base/footer.html.twig' %}
 {% endblock %}
