@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,11 +43,34 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_post_show', methods: ['GET'])]
-    public function show(Post $post): Response
+    /**
+     * The function create a comment form in the post show page and save it in the database
+     * @param Request $request 
+     * @param Post $post
+     * @param CommentRepository $commentRepository
+     * @return Response
+     */
+    #[Route('/{id}', name: 'app_post_show', methods: ['GET', 'POST'])]
+    public function show(Request $request, Post $post, CommentRepository $commentRepository): Response
     {
-        return $this->render('post/show.html.twig', [
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setCreatedAt(new \DateTimeImmutable());
+            $comment->setValid(false);
+            $comment->setPost($post);
+            $commentRepository->save($comment, true);
+
+            var_dump($request->attributes->get('_route'));
+
+            return $this->redirectToRoute($request->attributes->get('_route'), $request->attributes->get('_route_params'));
+        }
+
+        return $this->renderForm('post/show.html.twig', [
             'post' => $post,
+            'form' => $form,
         ]);
     }
 

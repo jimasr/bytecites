@@ -1,6 +1,6 @@
 <div id="home-post" class="d-flex flex-column p-3">
 	<h5>{{ post.title }}</h5>
-	<p id="post-content" class="text-justify">{{ post.content }}</p>
+	<p id="post-content" class="text-justify">{{ post.content|length > 255 ? post.content|slice(0, 255) ~ '...' : post.content  }}</p>
 	<a href="/post/{{post.id}}">Read more</a>
 	<p class="text-justify">{{ post.publishedAt ? post.publishedAt|date('Y-m-d') : '' }}</p>
 </div>
