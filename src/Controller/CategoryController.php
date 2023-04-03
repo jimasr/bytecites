@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,10 +42,14 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show(Category $category, CategoryRepository $categoryRepository): Response
     {
+        $posts = $category->getPosts();
+
         return $this->render('category/show.html.twig', [
             'category' => $category,
+            'categories' => $categoryRepository->findAll(),
+            'posts' => $posts
         ]);
     }
 

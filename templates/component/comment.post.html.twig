@@ -1,0 +1,7 @@
+<div id="comment-container" class="d-flex flex-column justify-content-center mb-3 px-3">
+	<div class="comment-user my-2">
+		{# TODO implement user profile pic and name #}
+	</div>
+	<p>{{ comment.content }}</p>
+	<p>{{ comment.createdAt ? comment.createdAt|date('Y-m-d') : '' }}</p>
+</div>

@@ -1,0 +1,17 @@
+.post-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: justify;
+
+	.post-inner {
+		display: flex;
+		flex-direction: column;
+		padding: 4em;
+	}
+}
+
+.description {
+	color: grey;
+}
