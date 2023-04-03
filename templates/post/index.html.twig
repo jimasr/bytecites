@@ -30,6 +30,7 @@
                 <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ post.category }}</td>
                 <td>
                     <a href="{{ path('app_post_show', {'id': post.id}) }}">show</a>
                     <a href="{{ path('app_post_edit', {'id': post.id}) }}">edit</a>

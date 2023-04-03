@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -77,6 +78,24 @@ class PostRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
    }
+
+
+   /**
+    * 
+    */
+   public function findByCategory(int $id): array
+   {
+       $entityManager = $this->getEntityManager();
+
+       $query = $entityManager->createQuery(
+            'SELECT p, c
+            FROM App\Entity\Post p
+            JOIN p.category c
+            WHERE p.id = :id'
+       )->setParameter('id', $id);
+
+       return $query->getArrayResult();
+    }
 
 //    public function findOneBySomeField($value): ?Post
 //    {
