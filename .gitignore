@@ -82,3 +82,6 @@ npm-debug.log
 yarn-error.log
 .DS_Store
 ###< symfony/webpack-encore-bundle ###
+
+### Jetbrains idea from PHP Storm
+/.idea
