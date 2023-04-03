@@ -53,6 +53,7 @@ class PostController extends AbstractController
     #[Route('/{id}', name: 'app_post_show', methods: ['GET', 'POST'])]
     public function show(Request $request, Post $post, CommentRepository $commentRepository): Response
     {
+        // Create a comment form
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -62,9 +63,7 @@ class PostController extends AbstractController
             $comment->setValid(false);
             $comment->setPost($post);
             $commentRepository->save($comment, true);
-
-            var_dump($request->attributes->get('_route'));
-
+            
             return $this->redirectToRoute($request->attributes->get('_route'), $request->attributes->get('_route_params'));
         }
 

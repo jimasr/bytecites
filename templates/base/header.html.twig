@@ -10,9 +10,13 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="searchBar" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<form class="col-12 col-lg-auto mb-lg-0 me-lg-3 collapse navbar-collapse">
-				<input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+
+			{# Search form #}
+			<form method="get" action="{{ path('app_search') }}" class="col-12 col-lg-auto mb-lg-0 me-lg-3 collapse navbar-collapse">
+				<input type="search" name="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" required="required">
+				<button type="submit" class="btn btn-light"><img src="{{asset('icons/search.png')}}" width="24px"></button>
 			</form>
+
 			<button type="button" class="btn btn-dark mx-1 collapse navbar-collapse">Sign Up</button>
 			<button type="button" class="btn btn-warning mx-1 collapse navbar-collapse">Login</button>
 		</div>
