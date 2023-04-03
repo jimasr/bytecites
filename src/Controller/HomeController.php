@@ -15,10 +15,16 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home', methods: ['GET'])]
     public function index(PostRepository $postRepository, CategoryRepository $categoryRepository): Response
     {
+        $posts = $postRepository->findAll();
+
+        foreach ($posts as $post) {
+            var_dump($post->getCreatedAt()->format('d/m/Y'));
+        }
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'posts' => $postRepository->findAll(),
-            'categories' => $categoryRepository->findAll()
+            'posts' => $posts,
+            // 'categories' => $categoryRepository->findAll()
         ]);
     }
 }
