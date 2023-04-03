@@ -6,6 +6,7 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +52,7 @@ class PostController extends AbstractController
      * @return Response
      */
     #[Route('/{id}', name: 'app_post_show', methods: ['GET', 'POST'])]
-    public function show(Request $request, Post $post, CommentRepository $commentRepository): Response
+    public function show(Request $request, Post $post, CommentRepository $commentRepository, CategoryRepository $categoryRepository): Response
     {
         // Create a comment form
         $comment = new Comment();
@@ -70,6 +71,7 @@ class PostController extends AbstractController
         return $this->renderForm('post/show.html.twig', [
             'post' => $post,
             'form' => $form,
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 

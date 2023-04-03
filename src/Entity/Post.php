@@ -39,13 +39,12 @@ class Post
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class)]
     private Collection $comments;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'posts')]
-    private Collection $categories;
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    private ?Category $category = null;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->categories = new ArrayCollection();
     }
     
     public function __toString(): string
@@ -172,27 +171,16 @@ class Post
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-        }
+        $this->category = $category;
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
-    {
-        $this->categories->removeElement($category);
-
-        return $this;
-    }
 }
