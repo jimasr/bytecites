@@ -14,6 +14,9 @@
 			<hr class="hr"/>
 
 			<div class="d-flex">
+                {% if posts is empty %}
+                    <p class="text-center">No posts yet for this category</p>
+                {% endif %}
 				{% for post in posts %}
 					{% include 'component/home.post.html.twig' with {'post' : post} %}
 				{% endfor %}
