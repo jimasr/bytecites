@@ -3,15 +3,35 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>Welcome to the Bytecites community !</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="card">
+        <div class="card-body">
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.username) }}
+
+                {{ form_row(registrationForm.email) }}
+
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+
+                {{ form_row(registrationForm.plainConfirmPassword, {
+                    label: 'Confirm Password'
+                }) }}
+
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+
+    <!-- TODO : Redirection for login -->
+    <div class="login-redirection">
+        Already have an account?
+        <a href="{{ path('app_user_index') }}">Log in</a>
+    </div>
+
 {% endblock %}
