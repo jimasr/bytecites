@@ -1,0 +1,5 @@
+<div id="post-featured">
+	{% for post in posts %}
+		{% include 'component/home.post.html.twig' with {'post' : post} %}
+	{% endfor %}
+</div>

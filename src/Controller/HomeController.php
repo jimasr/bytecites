@@ -13,18 +13,43 @@ use App\Repository\CategoryRepository;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home', methods: ['GET'])]
-    public function index(PostRepository $postRepository, CategoryRepository $categoryRepository): Response
+    public function index(PostRepository $postRepository): Response
     {
         $posts = $postRepository->findAll();
-
-        foreach ($posts as $post) {
-            var_dump($post->getCreatedAt()->format('d/m/Y'));
-        }
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'posts' => $posts,
-            // 'categories' => $categoryRepository->findAll()
+        ]);
+    }
+
+    public function latest(PostRepository $postRepository): Response
+    {
+        $posts = $postRepository->findBy([], ['publishedAt' => 'DESC'], 6);
+        
+        return $this->render('home/latest.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function popular(PostRepository $postRepository): Response
+    {
+        $posts = $postRepository->findAll();
+
+        foreach ($posts as $post) {
+            $latest[$post->getId()] = $post->getComments()->count();
+        }
+
+        //sort array maintaining the index association
+        arsort($latest);
+
+        //store 6 most popular posts
+        for($i = 0; $i < 6 && $i< count($latest); $i++) {
+            $popular[$i] = $postRepository->find(array_keys($latest)[$i]);
+        }
+
+        return $this->render('home/popular.html.twig', [
+            'posts' => $popular  
         ]);
     }
 }
