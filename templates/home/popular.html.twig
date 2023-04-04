@@ -1,0 +1,7 @@
+<div id="post">
+	{% set count = 0 %}
+	{% for post in posts %}
+		{% set count = count + 1 %}
+		{% include 'component/popular.post.html.twig' with {'post' : post, 'count' : count} %}
+	{% endfor %}
+</div>

@@ -16,7 +16,7 @@ class SearchController extends AbstractController
      * Search in the title, description and content of the post
      */
     #[Route('/', name: 'app_search', methods: ['GET'])]
-    public function index(Request $request, PostRepository $postRepository, CategoryRepository $categoryRepository): Response
+    public function index(Request $request, PostRepository $postRepository): Response
     {
         $query = $request->query->get('search');
         if ($query) {
@@ -29,7 +29,6 @@ class SearchController extends AbstractController
             'controller_name' => 'SearchController',
             'posts' => $posts,
             'query' => $query ?? '',
-            'categories' => $categoryRepository->findAll()
         ]);
     }
 }
