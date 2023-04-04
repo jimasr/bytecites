@@ -6,9 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PostRepository;
-use App\Entity\Post;
-use App\Form\PostType;
-use App\Repository\CategoryRepository;
 
 class HomeController extends AbstractController
 {
