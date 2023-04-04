@@ -34,15 +34,15 @@ class HomeController extends AbstractController
         $posts = $postRepository->findAll();
 
         foreach ($posts as $post) {
-            $latest[$post->getId()] = $post->getComments()->count();
+            $comments[$post->getId()] = $post->getComments()->count();
         }
 
         //sort array maintaining the index association
-        arsort($latest);
+        arsort($comments);
 
         //store 6 most popular posts
-        for($i = 0; $i < 6 && $i< count($latest); $i++) {
-            $popular[$i] = $postRepository->find(array_keys($latest)[$i]);
+        for($i = 0; $i < 6 && $i< count($comments); $i++) {
+            $popular[$i] = $postRepository->find(array_keys($comments)[$i]);
         }
 
         return $this->render('home/popular.html.twig', [
