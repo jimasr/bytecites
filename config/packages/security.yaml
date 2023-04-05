@@ -13,6 +13,11 @@ security:
         secured_area:
             form_login:
                 enable_csrf: true
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
