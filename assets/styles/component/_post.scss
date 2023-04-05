@@ -1,3 +1,4 @@
+@import '../abstracts/mixins';
 
 #post-container {
 	display: flex;
@@ -12,16 +13,19 @@
 	#latest-popular {
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
 		column-gap: 3em;
 
 		#latest-post-container {
 			max-width: 70%;
 		}
 
-		// #popular-post-container {
-		// 	max-width: 30%;
-		// }
+		@include media(s) {
+			flex-wrap: wrap;
+
+			#latest-post-container {
+				max-width: 90%;
+			}
+		}
 	}
 }
 
@@ -29,6 +33,10 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
+
+	@include media(m) {
+		justify-content: center;
+	}
 }
 
 #home-post {
