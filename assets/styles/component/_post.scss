@@ -43,7 +43,11 @@
 	width: 300px;
 	min-height: 350px;
 
-	#post-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	#text-content {
 		text-align: justify;
 	}
 }
