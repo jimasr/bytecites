@@ -38,13 +38,17 @@ class HomeController extends AbstractController
     public function popular(PostRepository $postRepository): Response
     {
         $posts = $postRepository->findAll();
+        $comments = [];
+        $popular = [];
 
         foreach ($posts as $post) {
             $comments[$post->getId()] = $post->getComments()->count();
         }
 
         //sort array maintaining the index association
-        arsort($comments);
+        if ($comments){
+            arsort($comments);
+        }
 
         //store 6 most popular posts
         for($i = 0; $i < 6 && $i< count($comments); $i++) {

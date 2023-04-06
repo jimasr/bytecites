@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
@@ -28,6 +29,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    public const HOME_ROUTE ='app_home';
 
     private EntityManagerInterface $entityManager;
     private UrlGeneratorInterface $urlGenerator;
@@ -76,8 +78,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         //Redirection into the home page after the success of the authentication
-        // return new RedirectResponse('/');
-        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+        return new RedirectResponse($this->urlGenerator->generate(self::HOME_ROUTE));
+    }
+
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
+    {
+        $request->getSession()->set(Security::AUTHENTICATION_ERROR, new CustomUserMessageAuthenticationException('Incorrect username or password. Please try again.'));
+
+        return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_ROUTE));
     }
 
     protected function getLoginUrl(Request $request): string
@@ -93,11 +101,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['username']]);
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            throw new CustomUserMessageAuthenticationException('User '.$user.' does not exist.');
         }
 
         return $user;
