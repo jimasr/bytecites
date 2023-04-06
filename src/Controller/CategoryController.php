@@ -42,13 +42,12 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category, CategoryRepository $categoryRepository): Response
+    public function show(Category $category): Response
     {
         $posts = $category->getPosts();
 
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            'categories' => $categoryRepository->findAll(),
             'posts' => $posts
         ]);
     }
@@ -79,5 +78,12 @@ class CategoryController extends AbstractController
         }
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function getCategories(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('category/_categories.html.twig', [
+            'categories' => $categoryRepository->findAll()
+        ]);
     }
 }

@@ -27,11 +27,8 @@
 
 					<h3 class="mt-4 px-3">Latest</h3>
 					<hr class="hr"/>
-					<div id="post-featured">
-						{% for post in posts %}
-							{% include 'component/home.post.html.twig' with {'post' : post} %}
-						{% endfor %}
-					</div>
+
+					{{render(controller('App\\Controller\\HomeController::latest'))}}
 				</aside>
 
 				<aside id="popular-post-container">
@@ -39,14 +36,7 @@
 					<hr class="hr"/>
 
 					{# TODO implement popular post section logic #}
-
-					<div>
-						{% set count = 0 %}
-						{% for post in posts %}
-							{% set count = count + 1 %}
-							{% include 'component/popular.post.html.twig' with {'post' : post, 'count' : count} %}
-						{% endfor %}
-					</div>
+					{{render(controller('App\\Controller\\HomeController::popular'))}}
 				</aside>
 			</div>
 				

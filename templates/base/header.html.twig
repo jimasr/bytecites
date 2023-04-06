@@ -35,11 +35,7 @@
 	<nav id="navbar-below" class="bg-light navbar navbar-expand-lg navbar-light px-3 mb-3">
 		<div class="navbar-collapse justify-content-center" id="navbarNavDropdown">
 			<ul class="navbar-nav ">
-				{% for category in categories %}
-					<li class="nav-item">
-						<a class="nav-link text-dark mx-5" href="/category/{{ category.id }}">{{ category.name }}</a>
-					</li>
-				{% endfor %}
+				{{render(controller('App\\Controller\\CategoryController::getCategories'))}}
 			</ul>
 		</div>
 	</nav>
