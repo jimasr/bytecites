@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PostRepository;
+use App\Entity\Post;
+use App\Form\PostType;
+use App\Repository\CategoryRepository;
 
 class HomeController extends AbstractController
 {
@@ -17,13 +20,16 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'posts' => $posts,
+            'user' => $this->getUser(),
         ]);
     }
+
+
 
     public function latest(PostRepository $postRepository): Response
     {
         $posts = $postRepository->findBy([], ['publishedAt' => 'DESC'], 6);
-        
+
         return $this->render('home/latest.html.twig', [
             'posts' => $posts
         ]);
@@ -46,7 +52,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/popular.html.twig', [
-            'posts' => $popular  
+            'posts' => $popular,
         ]);
     }
 }
