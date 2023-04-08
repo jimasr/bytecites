@@ -1,9 +1,15 @@
 <header>
 	<nav id="navbar-top" class="navbar navbar-expand-lg navbar-light px-3 d-flex justify-content-between">
-		<div >
+		<div class="d-flex">
 			<a class="navbar-brand" href="/">
 				<img id="logo" src="{{ asset('logo-no-background.png') }}" alt="Bytecites!"/>
 			</a>
+			{% if user is not null %}
+				<div class="d-flex align-items-center mx-2">
+					Hi,
+					<span class="user-header"> {{ user.username }} </span>
+				</div>
+			{% endif %}
 		</div>
 
 		<div class="d-flex">
@@ -19,9 +25,6 @@
 			</form>
 
 			{% if user is not null %}
-				<div class="user-header">
-					{{ user.username }}
-				</div>
 				<a type="button" class="btn btn-warning mx-1 collapse navbar-collapse" href="{{ path('app_logout') }}">Log Out</a>
 				
 			{%  else %}

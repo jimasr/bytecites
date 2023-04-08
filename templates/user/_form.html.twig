@@ -1,5 +1,3 @@
-
-
 <div class="card">
     <div class="card-body">
         {% if user %}
@@ -12,5 +10,6 @@
             {{ form_end(form) }}
         {% endif %}
     </div>
-
 </div>
+
+ <button class="btn">{{ button_label|default('Save') }}</button>
