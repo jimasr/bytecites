@@ -12,6 +12,7 @@
                 <th>Content</th>
                 <th>Valid</th>
                 <th>CreatedAt</th>
+                <th>Owner</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{ comment.content }}</td>
                 <td>{{ comment.valid ? 'Yes' : 'No' }}</td>
                 <td>{{ comment.createdAt ? comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ comment.owner }}</td>
                 <td>
                     <a href="{{ path('app_comment_show', {'id': comment.id}) }}">show</a>
                     <a href="{{ path('app_comment_edit', {'id': comment.id}) }}">edit</a>
@@ -35,5 +37,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_comment_new') }}">Create new</a>
 {% endblock %}

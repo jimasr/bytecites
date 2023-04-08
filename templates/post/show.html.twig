@@ -28,7 +28,7 @@
 
             <hr class="hr mb-5"></hr>
 
-            {{ include('comment/_form.html.twig') }}
+            {{ render(controller('App\\Controller\\CommentController::new', {'post': post})) }}
         </div>
     </section>
     
