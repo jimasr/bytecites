@@ -72,6 +72,7 @@ class PostController extends AbstractController
             'post' => $post,
             'form' => $form,
             'categories' => $categoryRepository->findAll(),
+            'user' => $this->getUser(),
         ]);
     }
 
