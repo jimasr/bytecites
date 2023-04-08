@@ -4,10 +4,10 @@
 			<a class="navbar-brand" href="/">
 				<img id="logo" src="{{ asset('logo-no-background.png') }}" alt="Bytecites!"/>
 			</a>
-			{% if user is not null %}
+			{% if app.user %}
 				<div class="d-flex align-items-center mx-2">
 					Hi,
-					<span class="user-header"> {{ user.username }} </span>
+					<span class="user-header"> {{ app.user.username }} </span>
 				</div>
 			{% endif %}
 		</div>
@@ -24,7 +24,7 @@
 				<button type="submit" class="btn btn-light"><img src="{{asset('icons/search.png')}}" width="24px"></button>
 			</form>
 
-			{% if user is not null %}
+			{% if app.user is not null %}
 				<a type="button" class="btn btn-warning mx-1 collapse navbar-collapse" href="{{ path('app_logout') }}">Log Out</a>
 				
 			{%  else %}

@@ -2,20 +2,18 @@
 
 {% block title %}Admin Dashboard{% endblock %}
 
-{% block header %}
-	{% include 'base/header.html.twig' %}
-{% endblock %}
-
 {% block main %}
     <main>
-        <aside>
-            
-
-        </aside>
-
+        <section id="admin">
+            <aside>
+                <h2>Admin Dashboard</h2>
+                <ul>
+                    <li><a href="{{ path('app_admin_user_index') }}">Users</a></li>
+                    <li><a href="{{ path('app_admin_category') }}">Categories</a></li>
+                    <li><a href="{{ path('app_admin_post') }}">Posts</a></li>
+                    <li><a href="{{ path('app_admin_comment') }}">Comments</a></li>
+                </ul>
+            </aside>
+        </section>
     </main>
-{% endblock %}
-
-{% block footer %}
-	{% include 'base/footer.html.twig' %}
 {% endblock %}

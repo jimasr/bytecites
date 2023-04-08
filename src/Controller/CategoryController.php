@@ -50,7 +50,7 @@ class CategoryController extends AbstractController
         return $this->render('category/show.html.twig', [
             'category' => $category,
             'posts' => $posts,
-            'user' => $this->getUser(),
+            // 'user' => $this->getUser(),
         ]);
     }
 

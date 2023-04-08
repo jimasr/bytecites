@@ -21,7 +21,6 @@ class UserType extends AbstractType
                 'label' => 'Roles',
                 'attr' => [
                     'multiple' => true,
-                    'class'=>'form-control myselect'
                 ],
                 'choices'  => [
                     'Admin' => 'ROLE_ADMIN',
