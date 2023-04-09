@@ -26,9 +26,17 @@
 
             <h4 class="mt-5">Leave a Reply</h4>
 
-            <hr class="hr mb-5"></hr>
+            {% if app.user %}
+                <hr class="hr mb-5"></hr>
 
-            {{ render(controller('App\\Controller\\CommentController::new', {'post': post})) }}
+                {{ render(controller('App\\Controller\\CommentController::new', {'post': post})) }}
+            {% else %}
+                <div>
+                    <h3>Please log in to leave a comments </h3>
+                    <a type="button" class="btn btn-warning mx-1 collapse navbar-collapse" href="{{ path('app_login') }}">Log In</a>
+                </div>
+
+            {% endif %}
         </div>
     </section>
     
