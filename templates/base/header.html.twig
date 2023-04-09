@@ -37,7 +37,7 @@
 
 			{% if app.user %}
 				<div class="btn-group">
-					<button class="btn btn-outline-dark btn-lg dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<button class="btn btn-outline-dark btn-lg dropdown-toggle btn-profile p-1" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{% if app.user.imageName is not null %}
 								<img alt="Profile picture" class="index-image" src="{{ vich_uploader_asset(app.user, 'imageFile') }}">
 						{% else %}

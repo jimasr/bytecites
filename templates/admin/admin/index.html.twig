@@ -13,7 +13,15 @@
             <aside id="admin-nav" class="bg-dark">
                 <div id="admin-profile">
                     <div id="admin-profile-img">
-                        {# <img src="{{ asset('images/profile.png') }}" alt="profile"> #}
+                        {% if app.user.imageName is not null %}
+                            <td>
+                                <img alt="Profile picture" class="index-image" src="{{ vich_uploader_asset(app.user, 'imageFile') }}">
+                            </td>
+                        {% else %}
+                            <td>
+                                <img alt="Profile picture" class="index-image" src="{{ asset('user/default_user.png') }}">
+                            </td>
+                        {% endif %}
                     </div>
                     <div id="admin-profile-info">
                         <h5>{{ app.user.username }}</h5>
