@@ -3,6 +3,7 @@
         height="200">
 </p>
 
+<p align="center">
 <img src="https://badgen.net/badge/Licence/MIT/green?icon=">
 <img src="https://badgen.net/badge/Repository/Github/color?icon=github">
 <img src="https://badgen.net/badge/Browser/Chrome/purple?icon=chrome">
@@ -11,6 +12,7 @@
 <img src="https://badgen.net/badge/PHP/Symfony/black?icon=php">
 <img src="https://badgen.net/badge/PostgreSQL/Database/yellow?icon=postgresql">
 <img src="https://badgen.net/badge/ /Discord/blue?icon=discord">
+</p>
 
 # Bytecites
 
