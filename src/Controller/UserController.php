@@ -21,7 +21,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    //TODO
     #[Route('/login', name: 'app_user_login', methods: ['POST'])]
     public function login(Request $request, UserRepository $userRepository): Response
     {
