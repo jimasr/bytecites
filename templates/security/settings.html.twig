@@ -2,46 +2,54 @@
 
 {% block title %} Settings {% endblock %}
 
-{% block body %}
+{% block header %}
+    {% include 'base/header.html.twig' %}
+{% endblock %}
 
-    <div class="settings-container">
 
-        <h1 class="settings-title">Settings</h1>
+{% block main %}
+    <main>
+        <div class="settings-container">
+            <h1 class="settings-title">Settings</h1>
 
-        <div class="card">
-            <div class="card-body">
-                {{ form_start(form) }}
-                <div class="my-custom-class-for-errors">
-                    {{ form_errors(form) }}
-                </div>
-
-                <div class="settings-picture">
-                    <div class="settings-label">
-                    {{ form_label(form.imageFile) }}
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    <div class="my-custom-class-for-errors">
+                        {{ form_errors(form) }}
                     </div>
-                    {{ form_widget(form.imageFile) }}
-                </div>
 
-                <div class="settings-field">
-                    <div class="settings-label">
-                        {{ form_label(form.username) }}
+                    <div class="settings-picture">
+                        <div class="settings-label label">
+                        {{ form_label(form.imageFile) }}
+                        </div>
+                        <div class="settings-image"> 
+                            {{ form_widget(form.imageFile) }}
+                        </div>
                     </div>
-                    {{ form_widget(form.username) }}
 
-                    <div class="settings-label">
-                        {{ form_label(form.email) }}
+                    <div class="settings-field">
+                        <div class="settings-label label">
+                            {{ form_label(form.username) }}
+                        </div>
+                        {{ form_widget(form.username) }}
+
+                        <div class="settings-label label">
+                            {{ form_label(form.email) }}
+                        </div>
+                        {{ form_widget(form.email) }}
                     </div>
-                    {{ form_widget(form.email) }}
+
+                    {{ form_row(form._token) }}
+
+                    <div class="text-center my-4">
+                        <button class="btn btn-dark btn-login"  type="submit">Save changes</button>
+                    </div>
+
                 </div>
-
-                {{ form_row(form._token) }}
-
-                <div class="text-center">
-                    <button class="btn btn-dark btn-login"  type="submit">Save changes</button>
-                </div>
-
             </div>
-        </div>
 
-    </div>
+        </div>
+    </main>
+
 {% endblock %}
