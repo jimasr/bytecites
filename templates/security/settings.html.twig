@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Settings {% endblock %}
+
+{% block body %}
+
+    <div class="settings-container">
+
+        <h1 class="settings-title">Settings</h1>
+
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="my-custom-class-for-errors">
+                    {{ form_errors(form) }}
+                </div>
+
+                <div class="settings-picture">
+                    <div class="settings-label">
+                    {{ form_label(form.imageFile) }}
+                    </div>
+                    {{ form_widget(form.imageFile) }}
+                </div>
+
+                <div class="settings-field">
+                    <div class="settings-label">
+                        {{ form_label(form.username) }}
+                    </div>
+                    {{ form_widget(form.username) }}
+
+                    <div class="settings-label">
+                        {{ form_label(form.email) }}
+                    </div>
+                    {{ form_widget(form.email) }}
+                </div>
+
+
+
+                <div class="text-center">
+                    <button class="btn btn-dark btn-login"  type="submit">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

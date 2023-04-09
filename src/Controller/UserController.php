@@ -21,26 +21,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/login', name: 'app_user_login', methods: ['POST'])]
-    public function login(Request $request, UserRepository $userRepository): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            //TODO
-
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('user/login.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
-
-
 //    #[Route('/register', name: 'app_user_new', methods: ['GET', 'POST'])]
 //    public function new(Request $request, UserRepository $userRepository): Response
 //    {
@@ -95,4 +75,29 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+//    #[Route('/settings', name: 'app_user_settings')]
+//    public function setting(Request $request, UserRepository $userRepository): Response
+//    {
+//
+//        if ($this->getUser()){
+//            return $this->redirectToRoute('app_login');
+//        }
+//
+//        $user=$this->getUser();
+//        $form = $this->createForm(UserType::class, $user);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $userRepository->save($user, true);
+//
+//            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+//        }
+//
+//        return $this->renderForm('user/settings.html.twig', [
+//            'user' => $user,
+//            'form' => $form,
+//        ]);
+//    }
 }

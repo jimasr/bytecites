@@ -85,3 +85,7 @@ yarn-error.log
 
 ### Jetbrains idea from PHP Storm
 /.idea
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
