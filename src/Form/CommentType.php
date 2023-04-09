@@ -14,6 +14,7 @@ class CommentType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, array('label' => 'Comments'));
+            // ->add('owner');
             // ->add('valid')
             // ->add('createdAt')
             // ->add('post')

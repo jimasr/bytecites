@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 #[Route('/search')]
-class SearchController extends AbstractController
+class   SearchController extends AbstractController
 {
     /**
      * Search in the title, description and content of the post
@@ -29,6 +29,7 @@ class SearchController extends AbstractController
             'controller_name' => 'SearchController',
             'posts' => $posts,
             'query' => $query ?? '',
+            'user' => $this->getUser(),
         ]);
     }
 }

@@ -1,0 +1,23 @@
+.login-container {
+  padding-inline: 20vw;
+  padding-top: 15vh;
+}
+
+.login-title {
+  color:gray;
+  text-align: center;
+}
+
+.signup-redirection {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 2.5vh;
+}
+
+.btn-login {
+  --bs-btn-padding-y: .25rem;
+  --bs-btn-padding-x: .5rem;
+  --bs-btn-font-size: .75rem;
+}

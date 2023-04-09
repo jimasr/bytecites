@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PostRepository;
+use App\Entity\Post;
+use App\Form\PostType;
+use App\Repository\CategoryRepository;
 
 class HomeController extends AbstractController
 {
@@ -20,10 +23,12 @@ class HomeController extends AbstractController
         ]);
     }
 
+
+
     public function latest(PostRepository $postRepository): Response
     {
         $posts = $postRepository->findBy([], ['publishedAt' => 'DESC'], 6);
-        
+
         return $this->render('home/latest.html.twig', [
             'posts' => $posts
         ]);
@@ -32,13 +37,17 @@ class HomeController extends AbstractController
     public function popular(PostRepository $postRepository): Response
     {
         $posts = $postRepository->findAll();
+        $comments = [];
+        $popular = [];
 
         foreach ($posts as $post) {
             $comments[$post->getId()] = $post->getComments()->count();
         }
 
         //sort array maintaining the index association
-        arsort($comments);
+        if ($comments){
+            arsort($comments);
+        }
 
         //store 6 most popular posts
         for($i = 0; $i < 6 && $i< count($comments); $i++) {
@@ -46,7 +55,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/popular.html.twig', [
-            'posts' => $popular  
+            'posts' => $popular,
         ]);
     }
 }
