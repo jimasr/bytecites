@@ -28,10 +28,6 @@
 		</div>
 
 		<div class="d-flex">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="searchBar" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-				</ul>
-			</button>
 
 			{# Search form #}
 			<form method="get" action="{{ path('app_search') }}" class="col-12 col-lg-auto mb-lg-0 me-lg-3 collapse navbar-collapse">
@@ -41,17 +37,16 @@
 
 			{% if app.user %}
 				<div class="btn-group">
-					<button class="btn btn-outline-warning btn-lg dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<button class="btn btn-outline-dark btn-lg dropdown-toggle btn-profile" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{% if app.user.imageName is not null %}
 								<img alt="Profile picture" class="index-image" src="{{ vich_uploader_asset(app.user, 'imageFile') }}">
 						{% else %}
 								<img alt="Profile picture" class="index-image" src="{{ asset('user/default_user.png') }}">
 						{% endif %}
 					</button>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="{{ path('app_user_settings') }}">Settings</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="{{ path('app_logout') }}">Log out</a>
+					<div class="dropdown-menu py-0">
+						<a class="dropdown-item p-3" href="{{ path('app_user_settings') }}">Settings</a>
+						<a class="dropdown-item p-3" href="{{ path('app_logout') }}">Log out</a>
 					</div>
 				</div>
 
