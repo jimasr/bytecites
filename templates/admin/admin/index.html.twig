@@ -13,7 +13,15 @@
             <aside id="admin-nav" class="bg-dark">
                 <div id="admin-profile">
                     <div id="admin-profile-img">
-                        {# <img src="{{ asset('images/profile.png') }}" alt="profile"> #}
+                        {% if app.user.imageName is not null %}
+                            <td>
+                                <img alt="Profile picture" class="index-image" src="{{ vich_uploader_asset(app.user, 'imageFile') }}">
+                            </td>
+                        {% else %}
+                            <td>
+                                <img alt="Profile picture" class="index-image" src="{{ asset('user/default_user.png') }}">
+                            </td>
+                        {% endif %}
                     </div>
                     <div id="admin-profile-info">
                         <h5>{{ app.user.username }}</h5>
@@ -27,10 +35,10 @@
                     <a href="{{ path('app_admin_admin') }}"><i class="fi fi-rr-dashboard"></i>Dashboard</a>
                     
                     <hr class="hr">
-                    <a href="{{ path('app_admin_admin') }}/User"><i class="fi fi-rr-users"></i>Users</a>
-                    <a href="{{ path('app_admin_admin') }}/Category"><i class="fi fi-rr-list"></i>Categories</a>
-                    <a href="{{ path('app_admin_admin') }}/Post"><i class="fi fi-rs-thumbtack"></i>Posts</a>
-                    <a href="{{ path('app_admin_admin') }}/Comment"><i class="fi fi-rr-comment-alt"></i>Comments</a>
+                    <a href="{{ path('app_admin_admin') }}/user"><i class="fi fi-rr-users"></i>Users</a>
+                    <a href="{{ path('app_admin_admin') }}/category"><i class="fi fi-rr-list"></i>Categories</a>
+                    <a href="{{ path('app_admin_admin') }}/post"><i class="fi fi-rs-thumbtack"></i>Posts</a>
+                    <a href="{{ path('app_admin_admin') }}/comment"><i class="fi fi-rr-comment-alt"></i>Comments</a>
                 </ul>
             </aside>
 
