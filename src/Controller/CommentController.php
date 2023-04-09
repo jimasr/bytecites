@@ -10,13 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/comment')]
 class CommentController extends AbstractController
 {
+    #[Route('/new', name: 'app_comment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
-        dump($this->getUser());
-        $comment->setOwner($this->getUser());
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 

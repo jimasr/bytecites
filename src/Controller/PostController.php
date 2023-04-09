@@ -23,7 +23,7 @@ class PostController extends AbstractController
      * @return Response
      */
     #[Route('/{id}', name: 'app_post_show', methods: ['GET', 'POST'])]
-    public function show(Request $request, Post $post, CommentRepository $commentRepository, CategoryRepository $categoryRepository): Response
+    public function show(Request $request, Post $post, CommentRepository $commentRepository): Response
     {
         // Create a comment form
         $comment = new Comment();
@@ -32,6 +32,7 @@ class PostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new \DateTimeImmutable());
+            $comment->setOwner($this->getUser());
             $comment->setValid(false);
             $comment->setPost($post);
             $commentRepository->save($comment, true);
@@ -42,7 +43,6 @@ class PostController extends AbstractController
         return $this->renderForm('post/show.html.twig', [
             'post' => $post,
             'form' => $form,
-            'categories' => $categoryRepository->findAll(),
         ]);
     }
 }
