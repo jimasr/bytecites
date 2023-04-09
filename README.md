@@ -60,9 +60,10 @@ When launched, go to your preferred web browser and navigate to http://localhost
 
 According to Symfony, the project is structured as following the MVC pattern.
 The technologies mainly use are :
-- PHP
-- Twig
-- SCSS
+- PHP for the back.
+- Twig for the views.
+- JavaScript for composer.
+- SCSS & Bootstrap for the front.
 
 The blog will be divided in two main parts.
 <br/>
