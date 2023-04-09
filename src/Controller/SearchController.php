@@ -29,6 +29,7 @@ class   SearchController extends AbstractController
             'controller_name' => 'SearchController',
             'posts' => $posts,
             'query' => $query ?? '',
+            'user' => $this->getUser(),
         ]);
     }
 }

@@ -24,5 +24,8 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "@flaticon/flaticon-uicons": "^2.0.1"
     }
 }

@@ -5,10 +5,10 @@
 {% block body %}
 
     <div class="register-container">
-        <h1 class="register-title">Welcome to the Bytecites community !</h1>
+        <h1 class="register-title">Welcome to the Bytecites Community!</h1>
 
         <div class="card">
-            <div class="card-body">
+            <div class="card-body text-nowrap">
 
                 {{ form_start(registrationForm) }}
 
@@ -24,7 +24,7 @@
                 {{ form_label(registrationForm.plainConfirmPassword) }}
                 {{ form_widget(registrationForm.plainConfirmPassword) }}
 
-                <div class="term-cond">
+                <div class="term-cond text-wrap">
                     {{ form_row(registrationForm.agreeTerms) }}
                 </div>
 

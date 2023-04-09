@@ -1,4 +1,19 @@
 <header>
+	<nav id="admin">
+		{% if app.user %}
+			{% for role in app.user.roles %}
+				{% if role == 'ROLE_ADMIN' %}
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<strong>Admin!</strong> You are logged in as an admin.
+						<a class="mx-3" href="{{ path('app_admin_admin') }}">Go to admin dashboard</a>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</nav>
+
+
 	<nav id="navbar-top" class="navbar navbar-expand-lg navbar-light px-3 d-flex justify-content-between">
 		<div class="d-flex">
 			<a class="navbar-brand" href="/">
