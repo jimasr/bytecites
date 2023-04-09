@@ -8,16 +8,26 @@
 
 {% block main %}
     <main>
-        <section id="admin">
-            <aside>
-                <h2>Admin Dashboard</h2>
-                <ul>
-                    <li><a href="{{ path('app_admin_user_index') }}">Users</a></li>
-                    <li><a href="{{ path('app_admin_category_index') }}">Categories</a></li>
-                    <li><a href="{{ path('app_admin_post_index') }}">Posts</a></li>
-                    <li><a href="{{ path('app_admin_comment_index') }}">Comments</a></li>
+        <section class="d-flex">
+            
+            <aside id="admin-nav" class="bg-dark">
+                <div>
+                    {# <img src="{{ asset() }}" alt=""> #}
+                </div>
+        
+                <ul class="d-flex flex-column">
+                    <a href="{{ path('app_admin_admin') }}"><i class="fi fi-rr-users"></i>Dashboard</a>
+                    <hr class="hr">
+                    <a href="{{ path('app_admin_admin') }}/User"><i class="fi fi-rr-users"></i>Users</a>
+                    <a href="{{ path('app_admin_admin') }}/Category"><i class="fi fi-rr-list"></i>Categories</a>
+                    <a href="{{ path('app_admin_admin') }}/Post"><i class="fi fi-rs-thumbtack"></i>Posts</a>
+                    <a href="{{ path('app_admin_admin') }}/Comment"><i class="fi fi-rr-comment-alt"></i>Comments</a>
                 </ul>
             </aside>
+
+            <div id="admin-content">
+                {{ render(controller(controller)) }}
+            </div>
         </section>
     </main>
 {% endblock %}

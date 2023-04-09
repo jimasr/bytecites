@@ -1,0 +1,38 @@
+
+#admin-nav {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		a {
+			display: flex;
+			align-items: center;
+
+			min-width: 200px;
+			padding: .5em 2em;
+			text-decoration: none;
+			color: #ffffff;
+
+			&:hover {
+				background-color: #4d4d4d;
+				color: #000000;
+
+			}
+
+			i {
+				width: 16px;
+				height: 16px;
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+
+
+
