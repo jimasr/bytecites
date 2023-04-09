@@ -11,12 +11,21 @@
         <section class="d-flex">
             
             <aside id="admin-nav" class="bg-dark">
-                <div>
-                    {# <img src="{{ asset() }}" alt=""> #}
+                <div id="admin-profile">
+                    <div id="admin-profile-img">
+                        {# <img src="{{ asset('images/profile.png') }}" alt="profile"> #}
+                    </div>
+                    <div id="admin-profile-info">
+                        <h5>{{ app.user.username }}</h5>
+                        <p>Admin</p>
+                    </div>
                 </div>
         
                 <ul class="d-flex flex-column">
-                    <a href="{{ path('app_admin_admin') }}"><i class="fi fi-rr-users"></i>Dashboard</a>
+
+
+                    <a href="{{ path('app_admin_admin') }}"><i class="fi fi-rr-dashboard"></i>Dashboard</a>
+                    
                     <hr class="hr">
                     <a href="{{ path('app_admin_admin') }}/User"><i class="fi fi-rr-users"></i>Users</a>
                     <a href="{{ path('app_admin_admin') }}/Category"><i class="fi fi-rr-list"></i>Categories</a>
@@ -25,7 +34,7 @@
                 </ul>
             </aside>
 
-            <div id="admin-content">
+            <div id="admin-content" class="p-3">
                 {{ render(controller(controller)) }}
             </div>
         </section>
