@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div class="register-container">
+        <h1 class="register-title">Welcome to the Bytecites Community!</h1>
+
+        <div class="card">
+            <div class="card-body text-nowrap">
+
+                {{ form_start(registrationForm) }}
+
+                {{ form_label(registrationForm.username) }}
+                {{ form_widget(registrationForm.username) }}
+
+                {{ form_label(registrationForm.email) }}
+                {{ form_widget(registrationForm.email) }}
+
+                {{ form_label(registrationForm.plainPassword) }}
+                {{ form_widget(registrationForm.plainPassword) }}
+
+                {{ form_label(registrationForm.plainConfirmPassword) }}
+                {{ form_widget(registrationForm.plainConfirmPassword) }}
+
+                <div class="term-cond text-wrap">
+                    {{ form_row(registrationForm.agreeTerms) }}
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark btn-register">Register</button>
+                </div>
+
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+
+        <div class="login-redirection">
+            Already have an account?
+            <a href="{{ path('app_login') }}">Log in</a>
+        </div>
+    </div>
+
+
+
+{% endblock %}

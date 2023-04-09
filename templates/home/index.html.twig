@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}
+	{% include 'base/header.html.twig' %}
+{% endblock %}
+
+{% block main %}
+	<main class="p-4">
+		{% include 'base/carousel.html.twig' %}
+
+		<section id="post-container">
+			<h3 class="mt-2 px-3">Featured</h3>
+
+			<hr class="hr"/>
+
+			<div id="post-featured">
+				{% for post in posts %}
+					{% include 'component/home.post.html.twig' with {'post' : post} %}
+				{% endfor %}
+			</div>
+
+			<div id="latest-popular">
+				<aside id="latest-post-container">
+					{# TODO implement latest post section logic #}
+
+					<h3 class="mt-4 px-3">Latest</h3>
+					<hr class="hr"/>
+
+					{{render(controller('App\\Controller\\HomeController::latest'))}}
+				</aside>
+
+				<aside id="popular-post-container">
+					<h3 class="mt-4 px-3">Popular posts</h3>
+					<hr class="hr"/>
+
+					{# TODO implement popular post section logic #}
+					{{render(controller('App\\Controller\\HomeController::popular'))}}
+				</aside>
+			</div>
+				
+		</section>
+
+	</main>
+{% endblock %}
+
+{% block footer %}
+	{% include 'base/footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block header %}
+    {% include 'base/header.html.twig' %}
+{% endblock %}
+{% block main %}
+<main>
+    <section class="post-details">
+        <div class="post-inner">
+            <h1 class="mb-3">{{ post.title }}</h1>
+            <h4 class="description">{{ post.description }}</h4>
+
+            <hr class="hr mb-5"></hr>
+
+            <p>{{ post.content }}</p>
+            <p>{{ post.publishedAt ? post.publishedAt|date('Y-m-d') : '' }}</p>
+
+            <hr class="hr mb-5"></hr>
+            
+            {% for comment in post.comments %}
+                {% include 'component/comment.post.html.twig' with {'comment' : comment } %}
+            {% endfor %}
+
+
+            <h4 class="mt-5">Leave a Reply</h4>
+
+            {% if app.user %}
+                <hr class="hr mb-5"></hr>
+
+                {{ render(controller('App\\Controller\\CommentController::new', {'post': post})) }}
+            {% else %}
+                <div>
+                    <h3>Please log in to leave a comments </h3>
+                    <a type="button" class="btn btn-warning mx-1 collapse navbar-collapse" href="{{ path('app_login') }}">Log In</a>
+                </div>
+
+            {% endif %}
+        </div>
+    </section>
+    
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'base/footer.html.twig' %}
+{% endblock %}

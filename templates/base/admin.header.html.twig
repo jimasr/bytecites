@@ -1,0 +1,12 @@
+<header>
+	<nav class="bg-dark d-flex justify-content-between text-nowrap">
+		<ul class="d-flex align-items-center m-0 p-0">
+			<li class="mx-4"><a href="{{ path('app_home')}}">&#8592 Home</a></li>
+		</ul>
+		<ul class="d-flex align-items-center m-0 ">
+			<li class="text-light mx-2 p-2">Howdy, {{ app.user.username }}! &#128075</li>
+			<li class="mx-2 p-2"><a href="{{ path('app_logout') }}" class="bg-da">Logout</a></li>
+		</ul>
+	</nav>
+
+</header>

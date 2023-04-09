@@ -1,0 +1,19 @@
+  @import 'base/reset.scss';
+  @import 'base/login.scss';
+  @import 'base/register.scss';
+  @import 'base/settings.scss';
+  @import 'base/user.scss';
+
+@import 'layout/header.scss';
+@import 'layout/footer.scss';
+@import 'layout/carousel';
+@import 'layout/admin.scss';
+
+  @import 'component/post.scss';
+  @import 'component/comment.scss';
+
+  @import "template/post.scss";
+
+@import "~bootstrap/scss/bootstrap";
+@import 'abstracts/mixins';
+@import "~@flaticon/flaticon-uicons/css/all/all";

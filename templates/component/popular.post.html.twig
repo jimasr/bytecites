@@ -1,0 +1,7 @@
+<div id="popular-post" class="d-flex align-items-center p-3">
+	<h1 class="text-secondary">{{count}}</h1>
+	<aside class="d-flex flex-column mx-3">
+		<a href="/post/{{post.id}}" class="popular-link"><h5>{{ post.title }}</h5></a>
+		<p class="text-justify">{{ post.publishedAt ? post.publishedAt|date('Y-m-d') : '' }}</p>
+	</aside>
+</div>
