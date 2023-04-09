@@ -21,7 +21,6 @@ class UserType extends AbstractType
             ->add('username', TextType::class, [
                 'label' => "Username :",
             ])
-            ->add('password')
             ->add('email', EmailType::class, [
                 'label' => "Email :"
             ])
@@ -39,6 +38,7 @@ class UserType extends AbstractType
             ])
             ->add('roles', ChoiceType::class, [
                 'label' => 'Roles',
+                'required' => false,
                 'attr' => [
                     'multiple' => true,
                 ],

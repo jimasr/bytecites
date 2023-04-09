@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,7 +47,7 @@ class SecurityController extends AbstractController
 
 
     #[Route('/settings', name: 'app_user_settings')]
-    public function setting(Request $request, UserRepository $userRepository): Response
+    public function setting(Request $request, UserRepository $userRepository, UserAuthenticatorInterface $authenticator, LoginFormAuthenticator $formAuthenticator): Response
     {
 
         if (!$this->getUser()){
@@ -60,7 +61,10 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->save($user, true);
 
-            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+            return $authenticator->authenticateUser(
+                $user,
+                $formAuthenticator,
+                $request);
         }
 
         return $this->renderForm('security/settings.html.twig', [
